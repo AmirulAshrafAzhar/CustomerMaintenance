@@ -1,0 +1,127 @@
+.address-tab {
+  padding: 10px;
+}
+
+.address-list {
+  margin-bottom: 30px;
+  overflow-x: auto; /* Add horizontal scrolling for small screens */
+}
+
+.address-list table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1000px; /* Ensure table doesn't get too compressed */
+}
+
+.address-list th, 
+.address-list td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.address-list th {
+  background-color: #f2f2f2;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  white-space: nowrap;
+  padding: 10px 8px;
+}
+
+.address-list tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.address-list td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px; /* Limit cell width */
+}
+
+.address-list .delete-btn {
+  padding: 6px 10px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.address-list .delete-btn:hover {
+  background-color: #d32f2f;
+}
+
+/* Font Awesome icon styling */
+.fa-trash {
+  font-size: 14px;
+}
+
+/* If Font Awesome is not available, use a fallback */
+.fa-trash::before {
+  content: "🗑️";
+}
+
+.address-form {
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+}
+
+.form-row {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-row input, 
+.form-row select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.form-actions button {
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-actions button:hover {
+  background-color: #45a049;
+}
+
+.form-actions button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.required:after {
+  content: " *";
+  color: red;
+}
+
+.error {
+  color: red;
+  font-size: 0.8em;
+  margin-top: 5px;
+}

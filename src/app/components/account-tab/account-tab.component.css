@@ -1,0 +1,44 @@
+.account-tab {
+  padding: 10px;
+}
+
+.form-row {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-row input, 
+.form-row select, 
+.form-row textarea {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-row textarea {
+  height: 80px;
+}
+
+.form-row input[type="checkbox"] {
+  width: auto;
+  margin-top: 5px;
+}
+
+.required:after {
+  content: " *";
+  color: red;
+}
+
+.error {
+  color: red;
+  font-size: 0.8em;
+  margin-top: 5px;
+}

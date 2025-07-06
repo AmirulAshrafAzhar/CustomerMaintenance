@@ -1,0 +1,26 @@
+<div class="customer-maintenance">
+  <div class="maintenance-buttons">
+    <button (click)="createNewCustomer()">Create New Customer</button>
+    <button (click)="cancelOrClear()">Cancel / Clear</button>
+    <button (click)="saveCustomer()">Save Customer</button>
+    <button (click)="deleteCustomer()">Delete Customer</button>
+    
+    <div class="quick-search">
+      <label>Quick Search:</label>
+      <input type="text" placeholder="Customer No" #searchInput>
+      <button (click)="quickSearch(searchInput.value)">Search</button>
+    </div>
+  </div>
+  
+  <div class="tabs">
+    <div class="tab-headers">
+      <div [class.active]="activeTab === 'account'" (click)="switchTab('account')">Account</div>
+      <div [class.active]="activeTab === 'address'" (click)="switchTab('address')">Address</div>
+    </div>
+    
+    <div class="tab-content">
+      <app-account-tab *ngIf="activeTab === 'account'" [customer]="customer"></app-account-tab>
+      <app-address-tab *ngIf="activeTab === 'address'" [customer]="customer"></app-address-tab>
+    </div>
+  </div>
+</div>

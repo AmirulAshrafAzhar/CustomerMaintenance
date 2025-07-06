@@ -1,0 +1,75 @@
+.customer-maintenance {
+  font-family: Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.maintenance-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.maintenance-buttons button {
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.maintenance-buttons button:hover {
+  background-color: #45a049;
+}
+
+.quick-search {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tabs {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.tab-headers {
+  display: flex;
+  background-color: #f1f1f1;
+}
+
+.tab-headers div {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.tab-headers div.active {
+  background-color: white;
+  border-bottom: 2px solid #4CAF50;
+}
+
+.tab-headers div:hover:not(.active) {
+  background-color: #ddd;
+}
+
+.tab-content {
+  padding: 20px;
+}
+
+/* Common form styles */
+.required:after {
+  content: " *";
+  color: red;
+}
+
+.error {
+  color: red;
+  font-size: 0.8em;
+  margin-top: 5px;
+}

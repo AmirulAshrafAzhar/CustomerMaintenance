@@ -1,0 +1,108 @@
+<div class="account-tab">
+  <form [formGroup]="accountForm">
+    <div class="form-row">
+      <label>Customer No:</label>
+      <input type="text" formControlName="customerNo" readonly>
+    </div>
+    
+    <div class="form-row">
+      <label class="required">Name 1:</label>
+      <input type="text" formControlName="name1" maxlength="50">
+      <div class="error" *ngIf="getControlError('name1')">
+        Name 1 is required (max 50 characters)
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <label>Name 2:</label>
+      <input type="text" formControlName="name2" maxlength="40">
+    </div>
+    
+    <div class="form-row">
+      <label>Attention To:</label>
+      <input type="text" formControlName="attentionTo" maxlength="35">
+    </div>
+    
+    <div class="form-row">
+      <label class="required">Customer Group:</label>
+      <select formControlName="customerGroup">
+        <option value="">Select Customer Group</option>
+        <option *ngFor="let group of customerGroups" [value]="group">{{ group }}</option>
+      </select>
+      <div class="error" *ngIf="getControlError('customerGroup')">
+        Customer Group is required
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <label>Business Type:</label>
+      <select formControlName="businessType">
+        <option value="">Select Business Type</option>
+        <option *ngFor="let type of businessTypes" [value]="type">{{ type }}</option>
+      </select>
+    </div>
+    
+    <div class="form-row">
+      <label class="required">Payment Cond:</label>
+      <select formControlName="paymentCond">
+        <option value="">Select Payment Condition</option>
+        <option *ngFor="let cond of paymentConditions" [value]="cond">{{ cond }}</option>
+      </select>
+      <div class="error" *ngIf="getControlError('paymentCond')">
+        Payment Condition is required
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <label class="required">Bureau:</label>
+      <select formControlName="region">
+        <option value="">Select Bureau</option>
+        <option *ngFor="let region of regions" [value]="region">{{ region }}</option>
+      </select>
+      <div class="error" *ngIf="getControlError('region')">
+        Bureau is required
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <label>Salesperson:</label>
+      <select formControlName="salesperson">
+        <option value="">Select Salesperson</option>
+        <option *ngFor="let person of salespersons" [value]="person">{{ person }}</option>
+      </select>
+    </div>
+    
+    <div class="form-row">
+      <label>ID Type:</label>
+      <select formControlName="idType">
+        <option value="">Select ID Type</option>
+        <option *ngFor="let type of idTypes" [value]="type">{{ type }}</option>
+      </select>
+    </div>
+    
+    <div class="form-row">
+      <label>IC/Passport:</label>
+      <input type="text" formControlName="idNumber" maxlength="15">
+    </div>
+    
+    <div class="form-row">
+      <label>Co Reg No:</label>
+      <input type="text" formControlName="coRegNo" maxlength="15">
+    </div>
+    
+    <div class="form-row">
+      <label>TIN No:</label>
+      <input type="text" formControlName="tinNo" maxlength="15">
+    </div>
+    
+    <div class="form-row">
+      <label>Remarks:</label>
+      <textarea formControlName="remarks" maxlength="60"></textarea>
+    </div>
+    
+    <div class="form-row">
+      <label>Eligible For Cash Sales:</label>
+      <input type="checkbox" formControlName="eligibleForCashSales">
+    </div>
+  </form>
+</div>

@@ -1,0 +1,165 @@
+<div class="address-tab">
+  <div class="address-list">
+    <h3>List Of Addresses</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Addr #</th>
+          <th>Actions</th>
+          <th>C / O Address</th>
+          <th>Street</th>
+          <th>PostNo</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Phone</th>
+          <th>Country</th>
+          <th>Address Type</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let address of customer.addresses; let i = index">
+          <td>{{ address.addressNo }}</td>
+          <td>
+            <button class="delete-btn" (click)="confirmDeleteAddress(i)">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+          <td>{{ address.address }}</td>
+          <td>{{ address.street }}</td>
+          <td>{{ address.postCode }}</td>
+          <td>{{ address.city }}</td>
+          <td>{{ address.state }}</td>
+          <td>{{ address.phone }}</td>
+          <td>{{ address.country }}</td>
+          <td>{{ getAddressTypeName(address.addressType) }}</td>
+          <td>{{ address.email }}</td>
+        </tr>
+        <tr *ngIf="customer.addresses.length === 0">
+          <td colspan="11">No addresses found</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="address-form">
+    <h3>Add New Address</h3>
+    <form [formGroup]="addressForm">
+      <div class="form-row">
+        <label>Address No:</label>
+        <input type="text" [value]="'#' + (customer.addresses.length + 1)" readonly>
+      </div>
+      
+      <div class="form-row">
+        <label class="required">Address Type:</label>
+        <select formControlName="addressType">
+          <option value="">Select Address Type</option>
+          <option *ngFor="let type of addressTypes" [value]="type.id">{{ type.name }}</option>
+        </select>
+        <div class="error" *ngIf="getControlError('addressType')">
+          Address Type is required
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <label>Address Description:</label>
+        <input type="text" formControlName="addressDescription" maxlength="36">
+        <div class="error" *ngIf="hasMaxLengthError('addressDescription')">
+          Address Description cannot exceed 36 characters
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <label class="required">Address:</label>
+        <input type="text" formControlName="address" maxlength="60">
+        <div class="error" *ngIf="getControlError('address')">
+          Address is required
+        </div>
+        <div class="error" *ngIf="hasMaxLengthError('address')">
+          Address cannot exceed 60 characters
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <label>Street:</label>
+        <input type="text" formControlName="street" maxlength="60">
+        <div class="error" *ngIf="hasMaxLengthError('street')">
+          Street cannot exceed 60 characters
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <label>Post Code:</label>
+        <input type="text" formControlName="postCode" maxlength="10">
+        <div class="error" *ngIf="hasMaxLengthError('postCode')">
+          Post Code cannot exceed 10 characters
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <label class="required">City:</label>
+        <input type="text" formControlName="city" maxlength="40">
+        <div class="error" *ngIf="getControlError('city')">
+          City is required
+        </div>
+        <div class="error" *ngIf="hasMaxLengthError('city')">
+          City cannot exceed 40 characters
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <label class="required">State:</label>
+        <input type="text" formControlName="state" maxlength="25">
+        <div class="error" *ngIf="getControlError('state')">
+          State is required
+        </div>
+        <div class="error" *ngIf="hasMaxLengthError('state')">
+          State cannot exceed 25 characters
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <label class="required">Country:</label>
+        <select formControlName="country">
+          <option value="">Select Country</option>
+          <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+        </select>
+        <div class="error" *ngIf="getControlError('country')">
+          Country is required
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <label>Email:</label>
+        <input type="email" formControlName="email" maxlength="120">
+        <div class="error" *ngIf="hasEmailError()">
+          Please enter a valid email address
+        </div>
+        <div class="error" *ngIf="hasMaxLengthError('email')">
+          Email cannot exceed 120 characters
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <label>Phone:</label>
+        <input type="text" formControlName="phone" maxlength="20">
+        <div class="error" *ngIf="hasMaxLengthError('phone')">
+          Phone cannot exceed 20 characters
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <label>Fax:</label>
+        <input type="text" formControlName="fax" maxlength="20">
+        <div class="error" *ngIf="hasMaxLengthError('fax')">
+          Fax cannot exceed 20 characters
+        </div>
+      </div>
+      
+      <div class="form-actions">
+        <button type="button" (click)="clearAddressForm()">Clear</button>
+        <button type="button" (click)="addAddress()" [disabled]="addressForm.invalid">Add</button>
+      </div>
+    </form>
+  </div>
+</div>

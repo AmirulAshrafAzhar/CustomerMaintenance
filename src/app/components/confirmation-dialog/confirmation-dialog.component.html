@@ -1,0 +1,25 @@
+<div class="dialog-overlay" *ngIf="isVisible">
+  <div class="dialog-container">
+    <div class="dialog-content">
+      <div class="dialog-header">
+        <h2>{{ isNotification ? 'Notification' : 'Confirmation' }}</h2>
+      </div>
+      <div class="dialog-body">
+        <p class="dialog-message">{{ message }}</p>
+        <p class="dialog-description" *ngIf="description">{{ description }}</p>
+      </div>
+      <div class="dialog-footer">
+        <!-- Show only OK button for notifications -->
+        <ng-container *ngIf="isNotification; else confirmationButtons">
+          <button class="btn-ok" (click)="onYesClick()">OK</button>
+        </ng-container>
+        
+        <!-- Show YES/NO buttons for confirmations -->
+        <ng-template #confirmationButtons>
+          <button class="btn-no" (click)="onNoClick()">NO</button>
+          <button class="btn-yes" (click)="onYesClick()">YES</button>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
